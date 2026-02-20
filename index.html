@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mr_2806 | Expert en Cybersécurité & Développement Sécurisé</title>
+<title>Mr_2806 | Cyber Sécurité Futuriste</title>
 
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -15,201 +16,66 @@
 --dark:#050816;
 --glass:rgba(255,255,255,0.05);
 --border:rgba(0,255,255,0.2);
+--text-light:#ffffffcc;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-font-family:'Inter',sans-serif;
-}
+/* Base */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;scroll-behavior:smooth;}
+body{background:#050816;color:white;overflow-x:hidden;}
 
-body{
-background:radial-gradient(circle at 20% 20%,#0f2027,#050816 60%);
-color:white;
-overflow-x:hidden;
-}
+/* Canvas 3D Background */
+canvas#bg3d{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 
-/* Background animation */
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:linear-gradient(45deg,#00f5ff20,#00ff8820,#ff00ff20);
-animation:rotateBg 20s linear infinite;
-z-index:-1;
-}
+/* Navbar */
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:rgba(5,8,22,0.7);backdrop-filter:blur(15px);border-bottom:1px solid var(--border);z-index:1000;}
+nav .logo{font-family:'Orbitron';font-size:1.6rem;color:var(--primary);font-weight:900;}
+nav ul{display:flex;list-style:none;gap:30px;}
+nav ul li a{color:white;text-decoration:none;transition:0.3s;}
+nav ul li a:hover{color:var(--primary);}
 
-@keyframes rotateBg{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
+/* Hero */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;}
+.hero-content h1{font-family:'Orbitron';font-size:clamp(3rem,8vw,5rem);background:linear-gradient(90deg,#00f5ff,#00ff88);-webkit-background-clip:text;color:transparent;animation:heroFade 2s ease forwards;}
+.hero-content p{margin-top:20px;font-size:1.3rem;color:var(--text-light);opacity:0.9;animation:heroFade 2.5s ease forwards;}
+@keyframes heroFade{0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);}}
 
-/* NAVBAR */
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 50px;
-background:rgba(5,8,22,0.6);
-backdrop-filter:blur(15px);
-border-bottom:1px solid var(--border);
-z-index:1000;
-}
+/* Buttons */
+.btn{display:inline-block;margin:20px 10px;padding:15px 35px;border-radius:50px;border:1px solid var(--primary);color:var(--primary);text-decoration:none;transition:0.4s;position:relative;}
+.btn:hover{background:var(--primary);color:#000;box-shadow:0 0 25px var(--primary);}
+.btn i{margin-right:10px;}
 
-.logo{
-font-family:'Orbitron',sans-serif;
-font-size:1.5rem;
-color:var(--primary);
-font-weight:900;
-letter-spacing:2px;
-}
+/* Glass Sections */
+section{padding:120px 50px;}
+.section-title{font-family:'Orbitron';font-size:2rem;margin-bottom:40px;color:var(--primary);text-align:center;}
+.glass{background:var(--glass);backdrop-filter:blur(15px);border:1px solid var(--border);border-radius:15px;padding:30px;max-width:800px;margin:auto;transition:0.4s;}
+.glass:hover{transform:translateY(-10px);box-shadow:0 0 40px #00f5ff50;}
 
-nav ul{
-display:flex;
-list-style:none;
-gap:30px;
-}
+/* CV / Skills */
+.skills-bar{position:relative;height:10px;background:rgba(0,255,136,0.2);border-radius:5px;margin-bottom:20px;}
+.skills-bar span{position:absolute;left:0;top:0;height:100%;border-radius:5px;background:linear-gradient(90deg,#00f5ff,#00ff88);width:0%;transition:1s ease;}
 
-nav ul li a{
-color:white;
-text-decoration:none;
-position:relative;
-}
+/* Footer */
+footer{text-align:center;padding:40px;background:#030712;border-top:1px solid var(--border);}
+footer p{opacity:0.6;}
 
-nav ul li a::after{
-content:"";
-position:absolute;
-bottom:-5px;
-left:0;
-width:0%;
-height:2px;
-background:var(--primary);
-transition:0.4s;
-}
+/* Floating WhatsApp */
+.whatsapp-float{position:fixed;bottom:25px;right:25px;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 0 20px #25D366;z-index:1000;transition:0.3s;}
+.whatsapp-float:hover{transform:scale(1.1);}
 
-nav ul li a:hover::after{
-width:100%;
-}
+/* Github Glow */
+.github-float{position:fixed;bottom:100px;right:25px;background:#000;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 0 15px #00f5ff;animation:glow 2s infinite alternate;z-index:1000;}
+@keyframes glow{0%{box-shadow:0 0 10px #00f5ff;}100%{box-shadow:0 0 25px #00ff88;}}
 
-/* HERO */
-#hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:0 20px;
-}
-
-.hero-content h1{
-font-family:'Orbitron';
-font-size:clamp(2.5rem,6vw,4rem);
-background:linear-gradient(90deg,#00f5ff,#00ff88);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.hero-content p{
-margin-top:20px;
-font-size:1.2rem;
-opacity:0.8;
-}
-
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:15px 35px;
-border-radius:50px;
-border:1px solid var(--primary);
-color:var(--primary);
-text-decoration:none;
-transition:0.4s;
-margin:10px;
-}
-
-.btn:hover{
-background:var(--primary);
-color:#000;
-box-shadow:0 0 25px var(--primary);
-}
-
-/* SECTION */
-section{
-padding:120px 50px;
-}
-
-.section-title{
-font-family:'Orbitron';
-font-size:2rem;
-margin-bottom:40px;
-color:var(--primary);
-text-align:center;
-}
-
-/* GLASS CARD */
-.glass{
-background:var(--glass);
-backdrop-filter:blur(15px);
-border:1px solid var(--border);
-border-radius:15px;
-padding:30px;
-transition:0.4s;
-max-width:800px;
-margin:auto;
-}
-
-.glass:hover{
-transform:translateY(-10px);
-box-shadow:0 0 40px #00f5ff50;
-}
-
-/* FLOATING WHATSAPP */
-.whatsapp-float{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-box-shadow:0 0 20px #25D366;
-z-index:999;
-animation:pulse 2s infinite;
-text-decoration:none;
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 10px #25D366;}
-50%{box-shadow:0 0 30px #25D366;}
-100%{box-shadow:0 0 10px #25D366;}
-}
-
-footer{
-text-align:center;
-padding:40px;
-background:#030712;
-border-top:1px solid var(--border);
-}
-
-footer p{
-opacity:0.6;
-}
+/* Responsive */
+@media(max-width:900px){nav ul{display:none;}}
 </style>
 </head>
-
 <body>
 
+<!-- 3D Matrix Canvas -->
+<canvas id="bg3d"></canvas>
+
+<!-- NAVBAR -->
 <nav>
 <div class="logo">Mr_2806</div>
 <ul>
@@ -219,47 +85,74 @@ opacity:0.6;
 </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
 <div class="hero-content">
 <h1>Mr_2806</h1>
 <p>Expert en Cybersécurité & Développement Sécurisé</p>
 
-<a href="https://github.com/" target="_blank" class="btn">
-<i class="fab fa-github"></i> GitHub
-</a>
-
-<a href="https://wa.me/50943243114?text=Bonjour%20Mr_2806,%20je%20souhaite%20vous%20contacter." target="_blank" class="btn">
-<i class="fab fa-whatsapp"></i> WhatsApp
-</a>
+<a href="https://github.com/" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://wa.me/50943243114?text=Bonjour%20Mr_2806,%20je%20souhaite%20vous%20contacter." target="_blank" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
 
 </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
 <h2 class="section-title">À propos</h2>
 <div class="glass">
-<p>
-Passionné par la cybersécurité et le développement sécurisé, je protège les systèmes et développe des solutions robustes.
-</p>
+<p>Passionné par la cybersécurité et le développement sécurisé, je protège les systèmes et développe des solutions robustes.</p>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="glass" style="text-align:center">
 <p>Disponible pour collaborations et missions professionnelles.</p>
-
-<a href="https://wa.me/50943243114?text=Bonjour%20Mr_2806,%20je%20souhaite%20vous%20contacter." target="_blank" class="btn">
-<i class="fab fa-whatsapp"></i> Me contacter sur WhatsApp
-</a>
-
+<a href="https://wa.me/50943243114?text=Bonjour%20Mr_2806,%20je%20souhaite%20vous%20contacter." target="_blank" class="btn"><i class="fab fa-whatsapp"></i> Me contacter sur WhatsApp</a>
 </div>
 </section>
 
+<!-- Footer -->
 <footer>
 <p>© 2026 Mr_2806 - Tous droits réservés</p>
 </footer>
 
-<!-- Floating Button -->
-<a href="https://wa.me/50943243114?text=Bonjour%20Mr_2806,%20je%20souhaite%20vous%20contacter." 
-class="whatsapp-float
+<!-- Floating Buttons -->
+<a href="https://wa.me/50943243114?text=Bonjour%20Mr_2806,%20je%20souhaite%20vous%20contacter." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://github.com/" class="github-float" target="_blank"><i class="fab fa-github"></i></a>
+
+<!-- SCRIPTS 3D MATRIX -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script>
+// THREE.js 3D Particles Matrix
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+let renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg3d'), alpha:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+let particles = new THREE.BufferGeometry();
+let particleCount = 6000;
+let positions = new Float32Array(particleCount * 3);
+for(let i=0;i<particleCount*3;i++) positions[i] = (Math.random()-0.5)*200;
+particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+let material = new THREE.PointsMaterial({color:0x00ff88,size:0.5});
+let points = new THREE.Points(particles, material);
+scene.add(points);
+
+camera.position.z = 100;
+
+function animate(){
+requestAnimationFrame(animate);
+points.rotation.y += 0.0015;
+points.rotation.x += 0.001;
+renderer.render(scene,camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+</script>
+
+</body>
+</html>
